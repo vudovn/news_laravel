@@ -1,0 +1,6 @@
+ - tạo SendEmailJob:
+        php artisan make:job SendEmailJob
+ - run jod 
+    php artisan queue:listen
+    php artisan queue:work
+ -    

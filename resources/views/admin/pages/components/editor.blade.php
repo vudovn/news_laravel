@@ -1,0 +1,1 @@
+<textarea name="content" id="content" class="ck-editor">{{ $data->content ?? old('content') }}</textarea>
