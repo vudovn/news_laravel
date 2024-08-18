@@ -10,4 +10,3 @@
 </script>
 <script src="/client_asset/custom/search.js"></script>
 <script src="/client_asset/custom/active.js"></script>
-<script src="/client_asset/custom/scroll.js"></script>

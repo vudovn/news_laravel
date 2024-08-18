@@ -57,7 +57,7 @@
                 <div class="col-12 mt-3">
                     <div class="d-flex flex-column flex-md-row gap-2">
                         <a href="{{ route('admin.role') }}" class="btn btn-secondary">Hủy</a>
-                        <button class="btn btn-primary" type="submit">Tạo vai trò</button>
+                        <button class="btn btn-primary" type="submit">Cập nhật</button>
                     </div>
                 </div>
             </div>

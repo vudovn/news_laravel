@@ -37,7 +37,9 @@
                                 <tr>
                                     <th>Ảnh</th>
                                     <th>Tiêu đề</th>
-                                    <th>Tác giả</th>
+                                    @if ($posts->first()->user->id != Auth()->user()->id)
+                                        <th>Tác giả</th>
+                                    @endif
                                     <th>Nổi bật</th>
                                     <th>Danh mục</th>
                                     <th>Trạng thái</th>
@@ -50,8 +52,14 @@
                                         <td>
                                             <img src="{{ $post->thumbnail }}" class="rounded" width="100px" alt="">
                                         </td>
-                                        <td> <a href="/{{ $post->slug }}.html">{{ $post->name }}</a> </td>
-                                        <td> {{ $post->user->name }} </td>
+                                        <td>
+                                            <p style="max-width: 250px; word-wrap: break-word; white-space: normal;">
+                                                <a href="{{ route('tinchitiet', $post->slug) }}">{{ $post->name }}</a>
+                                            </p>
+                                        </td>
+                                        @if ($posts->first()->user->id != Auth()->user()->id)
+                                            <td> {{ $post->user->name }} </td>
+                                        @endif
                                         <td>
                                             @if ($post->rank == 1)
                                                 <span class="badge bg-success">Nổi bật</span>

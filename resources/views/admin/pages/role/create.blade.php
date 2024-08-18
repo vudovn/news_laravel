@@ -59,7 +59,7 @@
                 <div class="col-12 mt-3">
                     <div class="d-flex flex-column flex-md-row gap-2">
                         <a href="{{ route('admin.user') }}" class="btn btn-secondary">Hủy</a>
-                        <button class="btn btn-primary" type="submit">Lưu vai trò</button>
+                        <button class="btn btn-primary" type="submit">Tạo</button>
                     </div>
                 </div>
             </div>

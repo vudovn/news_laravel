@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        toastr()->success('Data has been saved successfully!');
+        toastr()->success('Đăng nhập thành công!');
         return redirect('/');
     }
 

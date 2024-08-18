@@ -44,7 +44,7 @@
                 <div class="Search_searchIcon__-23JY">
                 </div>
                 <input class="Search_input__GnMba" id="search_on" spellcheck="false"
-                    placeholder="Tìm kiếm bài viết, video, ..." value="">
+                    placeholder="Tìm kiếm bài viết, video, danh mục ..." value="">
                 <div class="Search_closeIcon" id="search_close">
                 </div>
             </div>
@@ -181,7 +181,7 @@
                             aria-expanded="false">
                             <div class="avatar avatar-md avatar-indicators avatar-online">
                                 <img alt="avatar"
-                                    src="	https://ui-avatars.com/api/?name={{ Auth()->user()->name }}&background=random"
+                                    src="https://ui-avatars.com/api/?name={{ Auth()->user()->name }}&background=random"
                                     class="rounded-circle">
                             </div>
                         </a>
@@ -211,6 +211,13 @@
                                         <i class="fe fe-settings me-2"></i>Cài đặt
                                     </a>
                                 </li>
+                                @if (Auth::user()->role == 1)
+                                    <li>
+                                        <a class="dropdown-item text-link" href="{{ route('admin.dashboard') }}">
+                                            <i class="fe fe-settings me-2"></i>Quản trị
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                             <div class="dropdown-divider"></div>
                             <ul class="list-unstyled">

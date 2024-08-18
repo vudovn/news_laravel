@@ -178,7 +178,7 @@
                     @include('client.pages.chiTietTin.components.comment', [
                         'comment' => $comment,
                         'post' => $post,
-                        'name' => null
+                        'name' => null,
                     ])
                 @endforeach
             </div>
@@ -221,5 +221,6 @@
                 }, 5000);
             }
         </script>
+        <script src="/client_asset/custom/scroll.js"></script>
     @endpush
 @endsection

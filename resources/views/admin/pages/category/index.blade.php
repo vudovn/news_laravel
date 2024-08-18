@@ -34,13 +34,14 @@
                             <thead class="bg-light">
                                 <tr>
                                     <th>Tên danh mục</th>
-                                    <th>Đường dẫn</th>
                                     <th>Số bài viết</th>
+                                    <th>keyword</th>
+                                    <th>Mô tả SEO</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)
+                                @foreach ($categories->where('parent_id', null) as $category)
                                     @include('admin.pages.category.components.category-row', [
                                         'category' => $category,
                                         'char' => '',

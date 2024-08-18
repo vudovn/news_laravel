@@ -20,21 +20,29 @@ class AuthMiddleware
         // Kiểm tra người dùng đã đăng nhập chưa
         if (Auth::check()) {
             $user = Auth::user();
-            // Kiểm tra vai trò và trạng thái của người dùng
-            if ($user->status == 'on') {
+            
+            // Kiểm tra trạng thái của người dùng
+            if ($user->status == 'on' && $user->role == 1) {
                 return $next($request);
-            } else if ($user->role == 0) {
-                Auth::logout(); // Đăng xuất người dùng  
-                toastr()->error('Adu hacker à!');
-            } else if ($user->status == 'off') {
-                Auth::logout(); // Đăng xuất người dùng  
+            } 
+            
+            if ($user->status == 'off') {
+                Auth::logout(); // Đăng xuất người dùng
                 toastr()->error('Tài khoản này đã bị chặn!');
+                return redirect()->route('login');
             }
-        } else {
-            Auth::logout(); // Đăng xuất người dùng (nếu có)
-            toastr()->error('Vui lòng đăng nhập để sử dụng!');
+
+            // Kiểm tra vai trò và trạng thái khác
+            if ($user->role == 0) {
+                Auth::logout(); // Đăng xuất người dùng
+                toastr()->error('Adu hacker à!');
+                return redirect()->route('login');
+            } 
+            
         }
 
+        // Trường hợp chưa đăng nhập
+        toastr()->error('Vui lòng đăng nhập để sử dụng!');
         return redirect()->route('login');
     }
 }

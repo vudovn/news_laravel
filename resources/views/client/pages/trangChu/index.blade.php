@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="carousel-inner">
-                    @foreach ($tinxemnhieu as $key => $tin)
+                    @foreach ($tinxemnhieu->take(3) as $key => $tin)
                         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="3000">
                             <div class="shadow_new_banner">
                                 <img src="{{ $tin->thumbnail }}" class="d-block w-100" alt="{{ $tin->name }}">

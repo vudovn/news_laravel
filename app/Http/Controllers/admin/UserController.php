@@ -90,9 +90,13 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        $user = User::findOrFail($id); // tìm user có id đó để xóa
-        $user->delete(); //xóa user đó
-        Toastr::success('Xóa thành công!'); //Thông báo
+        $user = User::find($id);
+        if($user->posts->count() > 0) {
+            toastr()->error('Thành viên này đang chứa bài viết');
+            return redirect()->back();
+        }
+        $user->delete();
+        Toastr::success('Xóa thành công!');
         return redirect()->back();
     }
 
