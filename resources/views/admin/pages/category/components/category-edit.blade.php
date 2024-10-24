@@ -5,4 +5,4 @@
     @foreach ($category->allChildren as $childCategory)
         @include('admin.pages.category.components.category-edit', ['category' => $childCategory, 'char' => $char . '|-- ', 'data' => $data])
     @endforeach 
-@endif
+@endif 

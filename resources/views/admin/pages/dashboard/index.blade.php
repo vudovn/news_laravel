@@ -19,11 +19,11 @@
                         </div>
                         <!-- project number -->
                         <div class="lh-1">
-                            <h1 class="mb-2 fw-bold fs-2">1,863</h1>
-                            <span>
+                            <h1 class="mb-2 fw-bold fs-2">{{ number_format($post_count) }}</h1>
+                            {{-- <span>
                                 <span class="text-dark me-1">5+</span>
                                 Bài viết mới / ngày
-                            </span>
+                            </span> --}}
                         </div>
                     </div>
                 </div>
@@ -44,11 +44,11 @@
                         </div>
                         <!-- project number -->
                         <div class="lh-1">
-                            <h1 class="mb-2 fw-bold fs-2">42,339</h1>
-                            <span>
+                            <h1 class="mb-2 fw-bold fs-2">{{ number_format($total_views) }}</h1>
+                            {{-- <span>
                                 <span class="text-dark me-1">3,500+</span>
                                 Lượt xem mới / ngày
-                            </span>
+                            </span> --}}
                         </div>
                     </div>
                 </div>
@@ -69,15 +69,15 @@
                         </div>
                         <!-- project number -->
                         <div class="lh-1">
-                            <h1 class="mb-2 fw-bold fs-2">39,354</h1>
-                            <span>
+                            <h1 class="mb-2 fw-bold fs-2">{{ number_format($user) }}</h1>
+                            {{-- <span>
                                 <span class="text-dark me-1">30+</span>
                                 Thành viên mới / ngày
-                            </span>
+                            </span> --}}
                         </div>
                     </div>
                 </div>
-            </div>
+            </div
         </div>
     {{-- </div> --}}
 @endsection

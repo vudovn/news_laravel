@@ -98,6 +98,7 @@ class PostController extends Controller
     }
 
     public function update(Request $request, $id) {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|unique:posts,name,'. $id,
             'category_id'=>'required'
@@ -114,10 +115,10 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->thumbnail = $request->thumbnail;
         $post->status = 'pending';
-        if($request->rank == null) {
-            $post->rank = 0;
-        } else {
+        if($request->has('rank')) {
             $post->rank = $request->rank;
+        } else {
+            $post->rank = 0;
         }
         $post->meta_title = $request->meta_title;
         $post->meta_keyword = $request->meta_keyword;

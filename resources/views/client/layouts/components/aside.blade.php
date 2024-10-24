@@ -1,15 +1,32 @@
         <!-- aside -->
         <aside class="col-12 col-lg-3" style="padding-left: 0%;">
+            @yield('tinlienquan')
+
+            {{-- tin nổi bật --}}
             <div class="card mb-4">
                 <div class="card-header" style="border-bottom: none; padding-bottom: 0 !important;">
                     <div class="blog-posts-title title-wrap">
-                        <h2 class="title">Bài nổi bật</h2>
+                        <h2 class="title">Tin nổi bật</h2>
                     </div>
                 </div>
                 <div class="card-body" style="padding-top: 0 !important;">
-                    <div class=" text-center">
-                        Đang phát triển
+                    <div class="row">
+                        @foreach ($tinnoibat as $tin)
+                            <div class="col-12 py-2 row">
+                                <div class="col-4 d-flex align-items-center">
+                                    <img width="100%" src="{{ $tin->thumbnail }}" class="rounded" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <h5 class="card-title">
+                                        <a href="{{ route('tinchitiet', $tin->slug) }}" class="text-link">
+                                            {{ $tin->name }}
+                                        </a>
+                                    </h5>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+
                 </div>
             </div>
             <div class="card mb-4">

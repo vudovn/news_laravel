@@ -15,10 +15,11 @@ use App\Http\Controllers\admin\RoleController;
 // client
 use App\Http\Controllers\client\TinController;
 
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+// 
 // // auth admin
 Route::get('/admin', [DashboardController::class, 'index'])
     ->name('admin.login.index')->middleware('AuthVip');

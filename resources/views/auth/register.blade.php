@@ -122,7 +122,7 @@
                             </div>
                         </form>
                         <div class="mb-3">
-                            <a href="#" class="btn-login-social mb-3">
+                            <a href="{{ route('google.login') }}" class="btn-login-social mb-3">
                                 <img class="icon_social" width="25"
                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/800px-Google_%22G%22_logo.svg.png"
                                     alt="">

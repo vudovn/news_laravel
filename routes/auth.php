@@ -9,9 +9,17 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+
+use App\Http\Controllers\Auth\LoginGoogleController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+    // Google
+    Route::get('auth/google', [LoginGoogleController::class, 'redirect'])
+                ->name('google.login');
+    Route::get('auth/google/callback', [LoginGoogleController::class, 'callback']);
+    
     Route::get('dang-ky', [RegisteredUserController::class, 'create'])
                 ->name('register');
     Route::post('dang-ky', [RegisteredUserController::class, 'store']);

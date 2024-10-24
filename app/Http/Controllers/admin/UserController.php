@@ -41,6 +41,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->role = 1;
         $user->status = $request->status;
         $user->save();
 
@@ -57,11 +58,9 @@ class UserController extends Controller
     }
 
     public function edit($id) {
-
         $title = 'Chỉnh sửa thành viên';
         $roles = Role::all(); //Láy danh sách role
         $user = User::find($id); //Tìm user có id được truyền lên url
-
         return view('admin.pages.user.edit', compact(
             'title',
             'user',

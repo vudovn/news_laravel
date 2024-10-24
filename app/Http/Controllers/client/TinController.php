@@ -9,7 +9,7 @@ use App\Models\Category;
 
 class TinController extends Controller
 {
-    function trangchu() 
+    function trangchu()
     {
         $tinmoinhat = Post::with('user', 'categories')
             ->where('status', 'public')
@@ -33,7 +33,8 @@ class TinController extends Controller
         ));
     }
 
-    function tinmoi() {
+    function tinmoi()
+    {
         $title = 'Tin mới nhất';
         $meta_description = 'Tin mới nhất';
         $meta_keyword = 'Tin mới nhất, mới nhất, ....';
@@ -42,35 +43,48 @@ class TinController extends Controller
             ->where('status', 'public')
             ->orderByDesc('created_at')
             ->paginate(3);
-        return view('client.pages.tin.index',compact(
+        $tinnoibat = Post::with('user', 'categories')
+            ->where('status', 'public')
+            ->where('rank', 1)
+            ->orderByDesc('created_at')
+            ->get();
+        return view('client.pages.tin.index', compact(
             'title',
             'data',
+            'tinnoibat',
             'categories',
             'meta_description',
             'meta_keyword'
         ));
     }
 
-    function tinxemnhieu() {
+    function tinxemnhieu()
+    {
         $title = 'Tin xem nhiều';
         $meta_description = 'Tin xem nhiều';
         $meta_keyword = 'Tin xem nhiều, xem nhiều, ....';
         $categories = Category::with('posts')->get();
-
+        $tinnoibat = Post::with('user', 'categories')
+            ->where('status', 'public')
+            ->where('rank', 1)
+            ->orderByDesc('created_at')
+            ->get();
         $data = Post::with('user', 'categories')
             ->where('status', 'public')
             ->orderByDesc('views')
             ->paginate(3);
-        return view('client.pages.tin.index',compact(
+        return view('client.pages.tin.index', compact(
             'title',
             'data',
+            'tinnoibat',
             'categories',
             'meta_description',
             'meta_keyword'
         ));
     }
 
-    function tinchitiet($slug) {
+    function tinchitiet($slug)
+    {
         $post = Post::where('slug', $slug)->where('status', 'public')->first();
         $post->increment('views');
         $categories = Category::with('posts')->get();
@@ -81,10 +95,16 @@ class TinController extends Controller
         }
         $id_danhmuc = $post->categories()->first()->id;
         $tinlienquan = Category::with('posts')->find($id_danhmuc);
+        $tinnoibat = Post::with('user', 'categories')
+            ->where('status', 'public')
+            ->where('rank', 1)
+            ->orderByDesc('created_at')
+            ->get();
         return view('client.pages.chiTietTin.index', compact(
             'post',
             'tinlienquan',
-            'categories'
+            'categories',
+            'tinnoibat'
         ));
     }
 
@@ -93,13 +113,19 @@ class TinController extends Controller
         $category = Category::with('posts')->where('slug', $slug)->first();
         $posts = $category->posts()->where('status', 'public')->paginate(3);
         $categories = Category::with('posts')->get();
+        $tinnoibat = Post::with('user', 'categories')
+            ->where('status', 'public')
+            ->where('rank', 1)
+            ->orderByDesc('created_at')
+            ->get();
         if ($category == NULL) {
             return abort(403, 'Loại tin không tồn tại');
         }
         return view('client.pages.loaiTin.index', compact(
             'category',
             'categories',
-            'posts'
+            'posts',
+            'tinnoibat'
         ));
     }
 
@@ -118,7 +144,7 @@ class TinController extends Controller
         }
 
         $posts = NULL;
-        return view('client.pages.timKiem.index',compact(
+        return view('client.pages.timKiem.index', compact(
             'posts'
         ));
     }

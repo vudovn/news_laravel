@@ -51,7 +51,7 @@
                                         Họ và tên
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input value="{{ $user->name }}" name="name" type="text" class="form-control  @error('name') is-invalid @enderror" id="name"
+                                    <input  value="{{ $user->name }}" name="name" type="text" class="form-control disabled @error('name') is-invalid @enderror" id="name"
                                         placeholder="Họ và tên thành viên" >
                                         @error('name')
                                             <div class="invalid-feedback">{{  $message  }}</div>
@@ -65,7 +65,7 @@
                                         Email
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input value="{{ $user->email }}" name="email" type="text" class="form-control @error('email') is-invalid @enderror" id="email"
+                                    <input value="{{ $user->email }}" name="email" type="text" class="form-control disabled @error('email') is-invalid @enderror" id="email"
                                         placeholder="Địa chỉ email" >
                                         @error('email')
                                             <div class="invalid-feedback">{{  $message  }}</div>
@@ -84,6 +84,7 @@
                                         <div class="invalid-feedback">{{  $message  }}</div>
                                 @enderror    
                             </div>
+                            @if ($user->role == 1)
                             <div class="col-6 mt-3">
                                 <label for="role">Quyền hạn</label>
                                 <select name="role" id="role" class="form-select @error('role') is-invalid @enderror">
@@ -96,6 +97,7 @@
                                     <div class="invalid-feedback">{{  $message  }}</div>
                                 @enderror    
                             </div>
+                            @endif
                             <div>
                                 <div class="col-12 mt-3">
                                     <div class="d-flex flex-column flex-md-row gap-2">

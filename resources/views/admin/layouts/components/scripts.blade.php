@@ -34,7 +34,7 @@
 		
 		// select2
 		$(".select2_vd").select2({
-  				maximumSelectionLength: 4,
+  			maximumSelectionLength: 4,
 			  placeholder: 'Chọn các danh mục',
 			  allowClear: true
 		});

@@ -17,6 +17,35 @@
     <meta property="og:image:height" content="354" />
 @endsection
 
+@section('tinlienquan')
+    <div class="card mb-4">
+        <div class="card-header" style="border-bottom: none; padding-bottom: 0 !important;">
+            <div class="blog-posts-title title-wrap">
+                <h2 class="title">Tin liên quan</h2>
+            </div>
+        </div>
+        <div class="card-body" style="padding-top: 0 !important;">
+            <div class="row">
+                @foreach ($tinlienquan->posts as $tin)
+                    <div class="col-12 py-2 row">
+                        <div class="col-4 d-flex align-items-center">
+                            <img width="100%" src="{{ $tin->thumbnail }}" class="rounded" alt="">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="card-title">
+                                <a href="{{ route('tinchitiet', $tin->slug) }}" class="text-link">
+                                    {{ $tin->name }}
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="card mb-4">
         <div class="card-header" style="border-bottom: none;">
@@ -80,61 +109,6 @@
         </div>
     </div>
 
-    <!-- bài viết liên quan -->
-    <div class="card">
-        <div class="card-header" style="border-bottom: none;">
-            <div class="blog-posts-title title-wrap">
-                <h2 class="title">Bài viết liên quan</h2>
-            </div>
-        </div>
-        <div class="card-body row" style="padding-top: 0 !important;">
-            @foreach ($tinlienquan->posts as $tin)
-                @if ($tin->id != $post->id && $tin->status == 'public')
-                    <div class="col-12 col-md-3 col-lg-4 mb-10">
-                        <div class="mb-3">
-                            <a href="{{ route('tinchitiet', $tin->slug) }}">
-                                <!-- img -->
-                                <div class="img-zoom">
-                                    <img src="{{ $tin->thumbnail }}" alt="" class="img-fluid w-100">
-                                </div>
-                            </a>
-                        </div>
-                        <!-- text -->
-                        <div class="mb-2">
-                            <a href="danh mục" class="text-loaiTin">
-                                Thể thao
-                            </a>
-                        </div>
-                        <!-- text -->
-                        <div>
-                            <h2 class="h5">
-                                <a href="{{ route('tinchitiet', $tin->slug) }}" class="text-inherit title_news">
-                                    {{ $tin->name }}
-                                </a>
-                            </h2>
-                            <p>
-                                {{ $tin->short_content }}
-                            </p>
-                            <div class="d-flex justify-content-between text-muted mt-4">
-                                <span> <span class="icon_news" data-bs-toggle="tooltip" data-placement="bottom"
-                                        title="Ngày đăng"><i class="fe fe-calendar"></i>
-                                        {{ $tin->created_at->format('d/m/Y') }}
-                                    </span>
-                                </span>
-                                <span>
-                                    <small>
-                                        Thời gian đọc:
-                                        <span class="text-dark fw-bold">12 phút</span>
-                                    </small>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-
     <!-- bình luận -->
     <div class="card mb-4">
         <div class="card-header" style="border-bottom: 0 !important;">
@@ -195,6 +169,7 @@
             width: 2.5rem;
         }
     </style>
+
     @push('script')
         <script>
             var contentElement = document.getElementById('content');
