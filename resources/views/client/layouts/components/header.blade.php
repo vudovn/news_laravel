@@ -36,7 +36,7 @@
     <div class="NavBar_logo__Rgo-5">
         <a class="navbar-brand" href="/"><img src="/client_asset/images/logo/logo_vd.svg" alt=""
                 class="rounded" width=38></a>
-        <span>VuDevWeb</span>
+   <span>VuDevWeb</span>     
     </div>
     <div class="NavBar_body__4Yhth d-flex-center">
         <div class="search_form">

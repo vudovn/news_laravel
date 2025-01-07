@@ -6,7 +6,7 @@
 <script src="https://demo.bootstrap.news/bootnews/client_asset/vendor/smoothscroll-for-websites/SmoothScroll.js">
 </script>
 <script>
-    const API_SEARCH = "http://127.0.0.1:8000/api/v1/search?q=";
+    const API_SEARCH = "/api/v1/search?q=";
 </script>
 <script src="/client_asset/custom/search.js"></script>
 <script src="/client_asset/custom/active.js"></script>

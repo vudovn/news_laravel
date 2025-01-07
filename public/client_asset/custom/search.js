@@ -23,7 +23,6 @@ const makeAPICall = (searchValue) => {
             const { posts, category } = response.data;
             const { items: postItems, quantity: postQuantity } = posts;
             const { items: categoryItems, quantity: categoryQuantity } = category;
-            
             const resultsFound = postItems.length > 0 || categoryItems.length > 0;
             
             search_header.innerHTML = `
