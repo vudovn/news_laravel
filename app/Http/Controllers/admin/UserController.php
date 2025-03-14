@@ -17,6 +17,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        // demo
         $users = User::all(); //lấy all user
         $title = "QL thành viên"; //Title trang QL thành viên
         return view("admin.pages.user.index", compact(
